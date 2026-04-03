@@ -195,15 +195,6 @@ export function ChatView({
                     ))}
                     <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
                   </div>
-                  {msg.sources && msg.sources.length > 0 && (
-                    <div className="flex flex-col gap-0.5 px-3.5">
-                      {msg.sources.slice(0, 3).map((s: RAGSource, i: number) => (
-                        <p key={i} className="text-[12px] text-[#A1A1AA] leading-relaxed">
-                          Quelle: {s.title}
-                        </p>
-                      ))}
-                    </div>
-                  )}
                   <span className="text-[11px] text-[#A1A1AA] px-3.5">
                     {msg.timestamp.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                   </span>
