@@ -174,13 +174,15 @@ export function ChatView({
         {(chat.messages.length > 0 || loading) && (
           <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
             {chat.messages.map((msg) => (
-              <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                {msg.role === 'assistant' && (
+              <div key={msg.id} className="flex gap-3 flex-row">
+                {msg.role === 'assistant' ? (
                   <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold shrink-0 mt-0.5">
                     P
                   </div>
+                ) : (
+                  <div className="w-7 h-7 shrink-0" />
                 )}
-                <div className={`max-w-[80%] flex flex-col gap-2 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+                <div className="max-w-[80%] flex flex-col gap-2 items-start">
                   <div className={`px-3.5 py-2.5 text-[14px] leading-relaxed ${
                     msg.role === 'user'
                       ? 'text-[#09090B] font-medium'
