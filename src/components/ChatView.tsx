@@ -172,41 +172,40 @@ export function ChatView({
 
         {/* Nachrichten */}
         {(chat.messages.length > 0 || loading) && (
-          <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-4">
+          <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-6">
             {chat.messages.map((msg) => (
               <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                 {msg.role === 'assistant' && (
-                  <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-[6px] bg-[#18181B] flex items-center justify-center text-white text-[10px] font-semibold shrink-0 mt-0.5">
                     P
                   </div>
                 )}
                 <div className={`max-w-[80%] flex flex-col gap-2 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                  <div className={`px-3.5 py-2.5 rounded-[12px] text-[14px] leading-relaxed ${
+                  <div className={`text-[14px] leading-relaxed ${
                     msg.role === 'user'
-                      ? 'bg-[#18181B] text-white rounded-tr-[4px]'
-                      : 'bg-white border border-[#E4E4E7] text-[#09090B] rounded-tl-[4px] shadow-sm'
+                      ? 'text-[#09090B] font-medium text-right'
+                      : 'text-[#09090B] font-normal'
                   }`}>
                     {msg.attachments?.map((a) => (
-                      <div key={a} className="flex items-center gap-1.5 mb-2 text-[12px] opacity-70">
+                      <div key={a} className="flex items-center gap-1.5 mb-1 text-[12px] text-[#A1A1AA]">
                         <FileText size={12} />{a}
                       </div>
                     ))}
                     <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
                   </div>
                   {msg.sources && msg.sources.length > 0 && (
-                    <div className="flex flex-col gap-1.5 w-full">
+                    <div className="flex flex-col gap-0.5">
                       {msg.sources.slice(0, 3).map((s: RAGSource, i: number) => (
-                        <div key={i} className="bg-white border border-[#E4E4E7] border-l-2 border-l-[#D1D1D6] rounded-[8px] px-3 py-2">
-                          <p className="text-[11px] font-semibold text-[#52525B] mb-0.5">📄 {s.title}</p>
-                          <p className="text-[12px] text-[#A1A1AA] leading-relaxed">{s.excerpt?.slice(0, 120)}...</p>
-                        </div>
+                        <p key={i} className="text-[12px] text-[#A1A1AA] leading-relaxed">
+                          Quelle: {s.title}
+                        </p>
                       ))}
                     </div>
                   )}
                   {msg.suggestions && msg.suggestions.length > 0 && (
                     <div className="flex flex-wrap gap-1.5">
                       {msg.suggestions.map((s, i) => (
-                        <button key={i} onClick={() => setInput(s)} className="px-2.5 py-1 bg-white border border-[#E4E4E7] rounded-[6px] text-[12px] text-[#52525B] hover:border-[#D1D1D6] transition-all">
+                        <button key={i} onClick={() => setInput(s)} className="px-2.5 py-1 bg-transparent border border-[#E4E4E7] rounded-[6px] text-[12px] text-[#52525B] hover:bg-[#F4F4F5] transition-colors">
                           {s}
                         </button>
                       ))}
@@ -233,7 +232,7 @@ export function ChatView({
         )}
 
         {/* Input */}
-        <div className="px-6 pb-5 pt-3 bg-[#FAFAFA]">
+        <div className="px-6 pb-5 pt-3 bg-[#FAFAFA] border-t border-[#E4E4E7]">
           {attachment && (
             <div className="flex items-center gap-2 mb-2 px-1">
               <div className="flex items-center gap-1.5 bg-white border border-[#E4E4E7] rounded-[6px] px-2.5 py-1.5 text-[12px] text-[#52525B]">
