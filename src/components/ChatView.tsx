@@ -176,25 +176,25 @@ export function ChatView({
             {chat.messages.map((msg) => (
               <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                 {msg.role === 'assistant' && (
-                  <div className="w-6 h-6 rounded-[6px] bg-[#18181B] flex items-center justify-center text-white text-[10px] font-semibold shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold shrink-0 mt-0.5">
                     P
                   </div>
                 )}
                 <div className={`max-w-[80%] flex flex-col gap-2 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                  <div className={`text-[14px] leading-relaxed ${
+                  <div className={`px-3.5 py-2.5 text-[14px] leading-relaxed ${
                     msg.role === 'user'
-                      ? 'text-[#09090B] font-medium text-right'
-                      : 'text-[#09090B] font-normal'
+                      ? 'text-[#09090B] font-medium'
+                      : 'text-[#09090B]'
                   }`}>
                     {msg.attachments?.map((a) => (
-                      <div key={a} className="flex items-center gap-1.5 mb-1 text-[12px] text-[#A1A1AA]">
+                      <div key={a} className="flex items-center gap-1.5 mb-2 text-[12px] text-[#A1A1AA]">
                         <FileText size={12} />{a}
                       </div>
                     ))}
                     <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
                   </div>
                   {msg.sources && msg.sources.length > 0 && (
-                    <div className="flex flex-col gap-0.5">
+                    <div className="flex flex-col gap-0.5 px-3.5">
                       {msg.sources.slice(0, 3).map((s: RAGSource, i: number) => (
                         <p key={i} className="text-[12px] text-[#A1A1AA] leading-relaxed">
                           Quelle: {s.title}
@@ -202,16 +202,7 @@ export function ChatView({
                       ))}
                     </div>
                   )}
-                  {msg.suggestions && msg.suggestions.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {msg.suggestions.map((s, i) => (
-                        <button key={i} onClick={() => setInput(s)} className="px-2.5 py-1 bg-transparent border border-[#E4E4E7] rounded-[6px] text-[12px] text-[#52525B] hover:bg-[#F4F4F5] transition-colors">
-                          {s}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                  <span className="text-[11px] text-[#A1A1AA]">
+                  <span className="text-[11px] text-[#A1A1AA] px-3.5">
                     {msg.timestamp.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
