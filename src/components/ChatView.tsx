@@ -5,7 +5,6 @@ import { DEMO_CONTENT } from '../lib/demoContent';
 import type {
   Message,
   Chat,
-  RAGSource,
   MentionItem,
   ChatResponse,
   Attachment,
