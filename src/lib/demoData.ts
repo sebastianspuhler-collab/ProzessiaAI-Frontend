@@ -231,9 +231,9 @@ export const DEMO_ADAPTERS: DemoAdapter[] = [
     entities: ['Contacts', 'Deals', 'Activities', 'Companies'],
     demoData: {
       Contacts: [
-        { Name: 'Anna Berger', Unternehmen: 'Berger Logistics GmbH', Status: 'Kunde', 'Letzte Aktivität': '01.04.2026', E-Mail: 'a.berger@berger-log.de' },
-        { Name: 'Stefan Koch', Unternehmen: 'Koch & Partner KG', Status: 'Lead', 'Letzte Aktivität': '29.03.2026', E-Mail: 's.koch@kochpartner.de' },
-        { Name: 'Julia Meier', Unternehmen: 'Meier Technik AG', Status: 'Interessent', 'Letzte Aktivität': '25.03.2026', E-Mail: 'j.meier@meier-technik.de' },
+        { Name: 'Anna Berger', Unternehmen: 'Berger Logistics GmbH', Status: 'Kunde', 'Letzte Aktivität': '01.04.2026', 'E-Mail': 'a.berger@berger-log.de' },
+        { Name: 'Stefan Koch', Unternehmen: 'Koch & Partner KG', Status: 'Lead', 'Letzte Aktivität': '29.03.2026', 'E-Mail': 's.koch@kochpartner.de' },
+        { Name: 'Julia Meier', Unternehmen: 'Meier Technik AG', Status: 'Interessent', 'Letzte Aktivität': '25.03.2026', 'E-Mail': 'j.meier@meier-technik.de' },
       ],
       Deals: [
         { Titel: 'Jahresvertrag Berger Logistics', Wert: '24.000 €', Phase: 'Angebot versendet', Abschluss: '30.04.2026', Verantwortlich: 'M. Schmidt' },
