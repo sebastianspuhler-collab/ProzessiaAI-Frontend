@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AuroraBackground } from '../components/ui/aurora-background';
 import { AppSidebar } from '../components/AppSidebar';
 import { ChatView } from '../components/ChatView';
 import { AgentsView } from '../components/AgentsView';
@@ -47,9 +48,11 @@ export function IndexPage() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#FAFAFA]">
-      <AppSidebar activeView={activeView} onViewChange={setActiveView} />
-      <main className="flex-1 overflow-hidden flex flex-col">{renderView()}</main>
-    </div>
+    <AuroraBackground className="h-screen" showRadialGradient>
+      <div className="flex h-screen w-full overflow-hidden relative z-10">
+        <AppSidebar activeView={activeView} onViewChange={setActiveView} />
+        <main className="flex-1 overflow-hidden flex flex-col bg-white/80 backdrop-blur-sm">{renderView()}</main>
+      </div>
+    </AuroraBackground>
   );
 }
