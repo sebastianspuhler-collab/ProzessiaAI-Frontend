@@ -51,7 +51,7 @@ export function IndexPage() {
     <AuroraBackground className="h-screen" showRadialGradient>
       <div className="flex h-screen w-full overflow-hidden relative z-10">
         <AppSidebar activeView={activeView} onViewChange={setActiveView} />
-        <main className="flex-1 overflow-hidden flex flex-col bg-white/60 backdrop-blur-md">{renderView()}</main>
+        <main className="flex-1 overflow-hidden flex flex-col bg-white/30 backdrop-blur-sm">{renderView()}</main>
       </div>
     </AuroraBackground>
   );
