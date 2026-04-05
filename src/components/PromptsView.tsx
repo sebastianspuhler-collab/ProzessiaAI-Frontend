@@ -89,17 +89,17 @@ export function PromptsView({
             {prompts.map((prompt) => (
               <Card key={prompt.id}>
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-[14px] font-semibold text-[#09090B]">{prompt.title}</h3>
+                  <h3 className="text-[14px] font-semibold text-[#111827]">{prompt.title}</h3>
                   <Badge label={categoryLabel(prompt.category)} variant="default" />
                 </div>
-                <p className="text-[13px] text-[#52525B] leading-relaxed mb-1 line-clamp-3">
+                <p className="text-[13px] text-[#4B5563] leading-relaxed mb-1 line-clamp-3">
                   {prompt.content}
                 </p>
                 {prompt.hint && (
-                  <p className="text-[11px] text-[#A1A1AA] mt-1 mb-3 italic">{prompt.hint}</p>
+                  <p className="text-[11px] text-[#9CA3AF] mt-1 mb-3 italic">{prompt.hint}</p>
                 )}
-                <div className="flex items-center justify-between pt-3 border-t border-[#E4E4E7]">
-                  <span className="text-[11px] text-[#A1A1AA]">{prompt.usageCount} Verwendungen</span>
+                <div className="flex items-center justify-between pt-3 border-t border-[#E5E7EB]">
+                  <span className="text-[11px] text-[#9CA3AF]">{prompt.usageCount} Verwendungen</span>
                   <div className="flex gap-1.5">
                     <Button size="sm" variant="primary" onClick={() => usePrompt(prompt)}>
                       <ArrowRight size={12} />
@@ -123,7 +123,7 @@ export function PromptsView({
       {showCreate && (
         <Modal title="Prompt-Bibliothek – Wissen geteilt im Team" onClose={() => setShowCreate(false)}>
           <div className="flex flex-col gap-5">
-            <p className="text-[14px] text-[#52525B] leading-relaxed">
+            <p className="text-[14px] text-[#4B5563] leading-relaxed">
               Die Prompt-Bibliothek sammelt bewährte Anweisungen für den Chat – und stellt sie dem ganzen Team zur Verfügung. Einmal gut formuliert, immer wieder nutzbar.
             </p>
 
@@ -133,26 +133,26 @@ export function PromptsView({
                 { emoji: '✅', text: 'Konsistenz: Alle im Team arbeiten mit denselben bewährten Formulierungen' },
                 { emoji: '📈', text: 'Qualität: Die besten Prompts werden geteilt und verbessert' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-2.5 bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+                <div key={i} className="flex items-start gap-2.5 bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                   <span className="text-[16px]">{item.emoji}</span>
-                  <p className="text-[13px] text-[#52525B] leading-relaxed">{item.text}</p>
+                  <p className="text-[13px] text-[#4B5563] leading-relaxed">{item.text}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#F0F9FF] border border-blue-100 rounded-[8px] px-4 py-3">
-              <p className="text-[13px] text-blue-800 leading-relaxed">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-4 py-3">
+              <p className="text-[13px] text-[#3730A3] leading-relaxed">
                 In der Vollversion erstellt Ihr Team eigene Prompts und teilt sie mit Kollegen. Testen Sie jetzt unsere Demo-Prompts – klicken Sie auf „Verwenden".
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#E4E4E7]">
-              <p className="text-[12px] text-[#A1A1AA]">Team-Prompts in der Vollversion</p>
+            <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+              <p className="text-[12px] text-[#9CA3AF]">Team-Prompts in der Vollversion</p>
               <a
                 href="https://calendly.com/sebastian-spuhler/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px]"
+                className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px]"
               >
                 Demo buchen →
               </a>

@@ -130,20 +130,20 @@ function AgentChatView({ agent, onBack }: { agent: Agent; onBack: () => void }) 
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center gap-3 px-7 py-4 bg-white border-b border-[#E4E4E7]">
+      <div className="flex items-center gap-3 px-7 py-4 bg-white border-b border-[#E5E7EB]">
         <button
           onClick={onBack}
-          className="flex items-center gap-1.5 text-[13px] text-[#52525B] hover:text-[#09090B]"
+          className="flex items-center gap-1.5 text-[13px] text-[#6B7280] hover:text-[#111827]"
         >
           <ChevronLeft size={14} /> Zurück
         </button>
-        <div className="w-px h-4 bg-[#E4E4E7]" />
-        <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold">
+        <div className="w-px h-4 bg-[#E5E7EB]" />
+        <div className="w-7 h-7 rounded-[8px] bg-[#4F46E5] flex items-center justify-center text-white text-[11px] font-semibold">
           {agent.name[0]}
         </div>
         <div>
-          <p className="text-[14px] font-semibold text-[#09090B]">{agent.name}</p>
-          <p className="text-[12px] text-[#A1A1AA]">{agent.description}</p>
+          <p className="text-[14px] font-semibold text-[#111827]">{agent.name}</p>
+          <p className="text-[12px] text-[#9CA3AF]">{agent.description}</p>
         </div>
         <Badge
           label={agent.status === 'active' ? 'Aktiv' : 'Pausiert'}
@@ -154,15 +154,15 @@ function AgentChatView({ agent, onBack }: { agent: Agent; onBack: () => void }) 
         {messages.map((msg) => (
           <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
             {msg.role === 'assistant' && (
-              <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold shrink-0">
+              <div className="w-7 h-7 rounded-[8px] bg-[#4F46E5] flex items-center justify-center text-white text-[11px] font-semibold shrink-0">
                 {agent.name[0]}
               </div>
             )}
             <div
               className={`max-w-[80%] px-3.5 py-2.5 rounded-[12px] text-[14px] leading-relaxed ${
                 msg.role === 'user'
-                  ? 'bg-[#18181B] text-white rounded-tr-[4px]'
-                  : 'bg-white border border-[#E4E4E7] rounded-tl-[4px] shadow-sm text-[#09090B]'
+                  ? 'bg-[#4F46E5] text-white rounded-tr-[4px]'
+                  : 'bg-white border border-[#E5E7EB] rounded-tl-[4px] shadow-[0.25px_1px_3px_0px_rgba(79,70,229,0.07)] text-[#111827]'
               }`}
             >
               {msg.role === 'assistant' ? (
@@ -175,14 +175,14 @@ function AgentChatView({ agent, onBack }: { agent: Agent; onBack: () => void }) 
         ))}
         {loading && (
           <div className="flex gap-3">
-            <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold">
+            <div className="w-7 h-7 rounded-[8px] bg-[#4F46E5] flex items-center justify-center text-white text-[11px] font-semibold">
               {agent.name[0]}
             </div>
-            <div className="bg-white border border-[#E4E4E7] rounded-[12px] rounded-tl-[4px] px-4 py-3 flex gap-1.5 shadow-sm">
+            <div className="bg-white border border-[#E5E7EB] rounded-[12px] rounded-tl-[4px] px-4 py-3 flex gap-1.5 shadow-[0.25px_1px_3px_0px_rgba(79,70,229,0.07)]">
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
-                  className="w-1.5 h-1.5 rounded-full bg-[#A1A1AA] animate-bounce"
+                  className="w-1.5 h-1.5 rounded-full bg-[#C7D2FE] animate-bounce"
                   style={{ animationDelay: `${i * 0.15}s` }}
                 />
               ))}
@@ -190,20 +190,20 @@ function AgentChatView({ agent, onBack }: { agent: Agent; onBack: () => void }) 
           </div>
         )}
       </div>
-      <div className="px-6 pb-4 pt-2 bg-[#FAFAFA]">
-        <div className="flex items-center gap-2 bg-white border border-[#E4E4E7] rounded-[12px] px-3 py-2">
+      <div className="px-6 pb-4 pt-2 bg-[#FAFAFA] border-t border-[#E5E7EB]">
+        <div className="flex items-center gap-2 bg-white border border-[#E5E7EB] rounded-[12px] px-3 py-2 focus-within:border-[#C7D2FE]">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && send()}
             placeholder={`Nachricht an ${agent.name}...`}
-            className="flex-1 bg-transparent border-none outline-none text-[14px] placeholder-[#A1A1AA]"
+            className="flex-1 bg-transparent border-none outline-none text-[14px] placeholder-[#9CA3AF]"
           />
           <button
             onClick={send}
             disabled={!input.trim() || loading}
             className={`w-8 h-8 rounded-[8px] flex items-center justify-center ${
-              input.trim() && !loading ? 'bg-[#18181B] text-white' : 'bg-[#F4F4F5] text-[#A1A1AA]'
+              input.trim() && !loading ? 'bg-[#4F46E5] text-white hover:bg-[#4338CA]' : 'bg-[#F3F4F6] text-[#9CA3AF]'
             }`}
           >
             <MessageSquare size={14} />
@@ -263,21 +263,21 @@ export function AgentsView() {
             return (
               <Card key={agent.id}>
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-8 h-8 rounded-[8px] bg-[#F4F4F5] flex items-center justify-center text-[#52525B] font-semibold text-[13px]">
+                  <div className="w-8 h-8 rounded-[8px] bg-[#EEF2FF] flex items-center justify-center text-[#4F46E5] font-semibold text-[13px]">
                     {agent.name[0]}
                   </div>
                   <Badge label={statusLabel(agent.status)} variant={statusVariant(agent.status)} />
                 </div>
-                <h3 className="text-[14px] font-semibold text-[#09090B] mb-1">{agent.name}</h3>
-                <p className="text-[13px] text-[#52525B] leading-relaxed mb-3">{agent.description}</p>
-                <div className="flex items-center justify-between text-[11px] text-[#A1A1AA] mb-3">
+                <h3 className="text-[14px] font-semibold text-[#111827] mb-1">{agent.name}</h3>
+                <p className="text-[13px] text-[#4B5563] leading-relaxed mb-3">{agent.description}</p>
+                <div className="flex items-center justify-between text-[11px] text-[#9CA3AF] mb-3">
                   <span>{agent.runCount} Ausführungen</span>
                   <span>{agent.category}</span>
                 </div>
 
                 {running ? (
-                  <div className="pt-3 border-t border-[#E4E4E7]">
-                    <p className="text-[11px] font-semibold text-[#A1A1AA] uppercase tracking-[0.05em] mb-2.5">
+                  <div className="pt-3 border-t border-[#E5E7EB]">
+                    <p className="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.05em] mb-2.5">
                       Ausführung läuft
                     </p>
                     <div className="flex flex-col gap-2">
@@ -293,27 +293,27 @@ export function AgentsView() {
                             }`}
                           >
                             {done ? (
-                              <div className="w-4 h-4 rounded-full bg-[#18181B] flex items-center justify-center shrink-0">
+                              <div className="w-4 h-4 rounded-full bg-[#4F46E5] flex items-center justify-center shrink-0">
                                 <Check size={9} color="white" strokeWidth={3} />
                               </div>
                             ) : active ? (
-                              <div className="w-4 h-4 rounded-full border-2 border-[#18181B] border-t-transparent animate-spin shrink-0" />
+                              <div className="w-4 h-4 rounded-full border-2 border-[#4F46E5] border-t-transparent animate-spin shrink-0" />
                             ) : (
-                              <div className="w-4 h-4 rounded-full border border-[#D4D4D8] shrink-0" />
+                              <div className="w-4 h-4 rounded-full border border-[#D1D5DB] shrink-0" />
                             )}
                             <span
                               className={
                                 done
-                                  ? 'text-[#52525B] line-through decoration-[#A1A1AA]'
+                                  ? 'text-[#6B7280] line-through decoration-[#9CA3AF]'
                                   : active
-                                  ? 'text-[#09090B] font-medium'
-                                  : 'text-[#A1A1AA]'
+                                  ? 'text-[#111827] font-medium'
+                                  : 'text-[#9CA3AF]'
                               }
                             >
                               {stepLabel}
                             </span>
                             {done && (
-                              <span className="ml-auto text-[10px] text-[#A1A1AA]">✓</span>
+                              <span className="ml-auto text-[10px] text-[#9CA3AF]">✓</span>
                             )}
                           </div>
                         );
@@ -321,7 +321,7 @@ export function AgentsView() {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex gap-1.5 pt-3 border-t border-[#E4E4E7]">
+                  <div className="flex gap-1.5 pt-3 border-t border-[#E5E7EB]">
                     <Button size="sm" variant="primary" onClick={() => setChatAgent(agent)}>
                       <MessageSquare size={12} />
                       Chat starten
@@ -341,7 +341,7 @@ export function AgentsView() {
       {showCreate && (
         <Modal title="Agenten – Ihr Team immer mit dem richtigen Kontext" onClose={() => setShowCreate(false)}>
           <div className="flex flex-col gap-5">
-            <p className="text-[14px] text-[#52525B] leading-relaxed">
+            <p className="text-[14px] text-[#4B5563] leading-relaxed">
               Agenten sind spezialisierte KI-Assistenten die Sie einmal konfigurieren – und die dann immer wissen was ihre Aufgabe ist. Ihr Team chattet direkt mit dem zuständigen Agenten statt jeden Tag denselben Kontext neu zu erklären.
             </p>
 
@@ -352,29 +352,29 @@ export function AgentsView() {
                 { emoji: '🔗', title: 'Verbunden', text: 'Agenten haben Zugriff auf Ihre Wissensbasis und Ihre Systeme – und liefern fundierte Antworten.' },
                 { emoji: '⚡', title: 'Automatisierbar', text: 'Agenten können in Workflows eingebunden werden und Aufgaben vollautomatisch erledigen.' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+                <div key={i} className="flex items-start gap-3 bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                   <span className="text-[18px] shrink-0">{item.emoji}</span>
                   <div>
-                    <p className="text-[13px] font-semibold text-[#09090B]">{item.title}</p>
-                    <p className="text-[12px] text-[#52525B] mt-0.5 leading-relaxed">{item.text}</p>
+                    <p className="text-[13px] font-semibold text-[#111827]">{item.title}</p>
+                    <p className="text-[12px] text-[#4B5563] mt-0.5 leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#F0F9FF] border border-blue-100 rounded-[8px] px-4 py-3">
-              <p className="text-[13px] text-blue-800 leading-relaxed">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-4 py-3">
+              <p className="text-[13px] text-[#3730A3] leading-relaxed">
                 In der Vollversion konfigurieren Sie eigene Agenten in natürlicher Sprache – ohne Programmierkenntnisse. In einer persönlichen Demo zeigen wir Ihnen wie das für Ihr Unternehmen aussehen kann.
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#E4E4E7]">
-              <p className="text-[12px] text-[#A1A1AA]">Eigene Agenten in der Vollversion</p>
+            <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+              <p className="text-[12px] text-[#9CA3AF]">Eigene Agenten in der Vollversion</p>
               <a
                 href="https://calendly.com/sebastian-spuhler/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#27272A] transition-colors"
+                className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#4338CA] transition-colors"
               >
                 Demo buchen →
               </a>

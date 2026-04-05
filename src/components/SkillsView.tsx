@@ -41,7 +41,7 @@ export function SkillsView() {
       {showCreate && (
         <Modal title="Skills – die KI genau auf Ihr Unternehmen abstimmen" onClose={() => setShowCreate(false)}>
           <div className="flex flex-col gap-5">
-            <p className="text-[14px] text-[#52525B] leading-relaxed">
+            <p className="text-[14px] text-[#4B5563] leading-relaxed">
               Ein Skill ist eine Regel die Sie der KI einmal geben – und die dann in jedem Chat automatisch gilt. Kein Wiederholen, kein Erklären. Die KI verhält sich einfach immer so wie Sie es wollen.
             </p>
 
@@ -52,29 +52,29 @@ export function SkillsView() {
                 { emoji: '🔀', title: 'Kombinierbar', text: 'Mehrere Skills können gleichzeitig aktiv sein und sich gegenseitig ergänzen.' },
                 { emoji: '🏢', title: 'Für Ihr Unternehmen', text: 'In der Vollversion erstellen Sie eigene Skills für Ihre spezifischen Anforderungen – ohne Programmierung.' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+                <div key={i} className="flex items-start gap-3 bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                   <span className="text-[18px] shrink-0">{item.emoji}</span>
                   <div>
-                    <p className="text-[13px] font-semibold text-[#09090B]">{item.title}</p>
-                    <p className="text-[12px] text-[#52525B] mt-0.5 leading-relaxed">{item.text}</p>
+                    <p className="text-[13px] font-semibold text-[#111827]">{item.title}</p>
+                    <p className="text-[12px] text-[#4B5563] mt-0.5 leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#F0F9FF] border border-blue-100 rounded-[8px] px-4 py-3">
-              <p className="text-[13px] text-blue-800 leading-relaxed">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-4 py-3">
+              <p className="text-[13px] text-[#3730A3] leading-relaxed">
                 In der Vollversion definieren Sie eigene Skills in natürlicher Sprache. In einer persönlichen Demo zeigen wir Ihnen wie das für Ihr Team aussehen kann.
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#E4E4E7]">
-              <p className="text-[12px] text-[#A1A1AA]">Eigene Skills in der Vollversion</p>
+            <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+              <p className="text-[12px] text-[#9CA3AF]">Eigene Skills in der Vollversion</p>
               <a
                 href="https://calendly.com/sebastian-spuhler/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#27272A] transition-colors"
+                className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#4338CA] transition-colors"
               >
                 Demo buchen →
               </a>
@@ -95,21 +95,21 @@ function SkillCard({ skill, onToggle }: { skill: DemoSkill; onToggle: () => void
   };
 
   return (
-    <div className={`bg-white border rounded-[10px] px-4 py-3.5 transition-all ${skill.isActive ? 'border-[#D4D4D8]' : 'border-[#E4E4E7] opacity-60'}`}>
+    <div className={`bg-white border rounded-[10px] px-4 py-3.5 transition-all shadow-[0.25px_1px_3px_0px_rgba(79,70,229,0.07)] ${skill.isActive ? 'border-[#C7D2FE]' : 'border-[#E5E7EB] opacity-60'}`}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3 flex-1 min-w-0">
-          <div className={`w-8 h-8 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 ${skill.isActive ? 'bg-[#18181B] text-white' : 'bg-[#F4F4F5] text-[#A1A1AA]'}`}>
+          <div className={`w-8 h-8 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5 ${skill.isActive ? 'bg-[#4F46E5] text-white' : 'bg-[#F3F4F6] text-[#9CA3AF]'}`}>
             <Sparkles size={14} />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-              <h3 className="text-[14px] font-semibold text-[#09090B]">{skill.name}</h3>
+              <h3 className="text-[14px] font-semibold text-[#111827]">{skill.name}</h3>
               <Badge label={categoryLabel[skill.category] ?? skill.category} variant="demo" />
               {skill.isGlobal && <Badge label="Global" variant="paused" />}
             </div>
-            <p className="text-[13px] text-[#52525B] leading-relaxed">{skill.description}</p>
+            <p className="text-[13px] text-[#4B5563] leading-relaxed">{skill.description}</p>
             {skill.example && (
-              <p className="text-[12px] text-[#71717A] mt-2 bg-[#F7F7F8] rounded-[6px] px-3 py-2 leading-relaxed">
+              <p className="text-[12px] text-[#6B7280] mt-2 bg-[#F9FAFB] rounded-[6px] px-3 py-2 leading-relaxed">
                 {skill.example.length > 120 ? skill.example.slice(0, 120) + '…' : skill.example}
               </p>
             )}
@@ -118,7 +118,7 @@ function SkillCard({ skill, onToggle }: { skill: DemoSkill; onToggle: () => void
 
         <button
           onClick={onToggle}
-          className={`relative w-11 h-6 rounded-full transition-colors duration-200 shrink-0 mt-1 ${skill.isActive ? 'bg-[#09090B]' : 'bg-[#D1D1D6]'}`}
+          className={`relative w-11 h-6 rounded-full transition-colors duration-200 shrink-0 mt-1 ${skill.isActive ? 'bg-[#4F46E5]' : 'bg-[#D1D5DB]'}`}
           title={skill.isActive ? 'Deaktivieren' : 'Aktivieren'}
         >
           <span

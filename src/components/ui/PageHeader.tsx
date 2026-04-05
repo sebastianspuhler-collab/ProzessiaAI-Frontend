@@ -10,10 +10,10 @@ export function PageHeader({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex items-center justify-between px-7 py-5 bg-white border-b border-[#E4E4E7]">
+    <div className="flex items-center justify-between px-7 py-5 bg-white border-b border-[#E5E7EB]">
       <div>
-        <h1 className="text-[17px] font-semibold tracking-[-0.01em] text-[#09090B]">{title}</h1>
-        {subtitle && <p className="text-[13px] text-[#52525B] mt-0.5">{subtitle}</p>}
+        <h1 className="text-[17px] font-semibold tracking-[-0.01em] text-[#111827]">{title}</h1>
+        {subtitle && <p className="text-[13px] text-[#6B7280] mt-0.5">{subtitle}</p>}
       </div>
       {action && <div>{action}</div>}
     </div>

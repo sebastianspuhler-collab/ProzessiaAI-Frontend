@@ -13,11 +13,11 @@ export function EmptyState({
 }) {
   return (
     <div className="flex flex-col items-center justify-center py-16 px-8 text-center">
-      <div className="w-12 h-12 rounded-xl bg-[#F4F4F5] flex items-center justify-center text-[#A1A1AA] mb-4">
+      <div className="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center text-[#4F46E5] mb-4">
         {icon}
       </div>
-      <h3 className="text-[14px] font-semibold text-[#09090B] mb-1">{title}</h3>
-      <p className="text-[13px] text-[#52525B] max-w-xs">{description}</p>
+      <h3 className="text-[14px] font-semibold text-[#111827] mb-1">{title}</h3>
+      <p className="text-[13px] text-[#6B7280] max-w-xs">{description}</p>
       {action && <div className="mt-4">{action}</div>}
     </div>
   );

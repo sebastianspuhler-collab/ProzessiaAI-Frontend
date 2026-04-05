@@ -85,15 +85,15 @@ export function NotesView() {
       <div className="flex-1 overflow-y-auto p-7 bg-[#FAFAFA]">
         {/* Quick-Add Form */}
         {showForm && (
-          <div className="mb-5 bg-white border border-[#E4E4E7] rounded-[10px] p-4 shadow-sm">
-            <p className="text-[11px] font-semibold text-[#A1A1AA] uppercase tracking-[0.05em] mb-3">
+          <div className="mb-5 bg-white border border-[#E5E7EB] rounded-[10px] p-4 shadow-sm">
+            <p className="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.05em] mb-3">
               Neue Notiz
             </p>
             <input
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="Titel..."
-              className="w-full bg-[#F7F7F8] border border-[#E4E4E7] rounded-[7px] px-3 py-2 text-[14px] font-medium outline-none focus:border-[#D1D1D6] mb-2"
+              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-[7px] px-3 py-2 text-[14px] font-medium outline-none focus:border-[#D1D5DB] mb-2"
               autoFocus
             />
             <textarea
@@ -101,14 +101,14 @@ export function NotesView() {
               onChange={(e) => setNewContent(e.target.value)}
               placeholder="Inhalt... (Zeilenumbrüche werden übernommen)"
               rows={4}
-              className="w-full bg-[#F7F7F8] border border-[#E4E4E7] rounded-[7px] px-3 py-2 text-[13px] outline-none focus:border-[#D1D1D6] resize-none mb-2"
+              className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-[7px] px-3 py-2 text-[13px] outline-none focus:border-[#D1D5DB] resize-none mb-2"
             />
             <div className="flex items-center gap-3">
               <input
                 value={newTag}
                 onChange={(e) => setNewTag(e.target.value)}
                 placeholder="Tag (z.B. Einkauf, HR...)"
-                className="flex-1 bg-[#F7F7F8] border border-[#E4E4E7] rounded-[7px] px-3 py-2 text-[13px] outline-none focus:border-[#D1D1D6]"
+                className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-[7px] px-3 py-2 text-[13px] outline-none focus:border-[#D1D5DB]"
               />
               <div className="flex gap-1.5 shrink-0">
                 {COLORS.map((c) => (
@@ -131,7 +131,7 @@ export function NotesView() {
                   href="https://calendly.com/sebastian-spuhler/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#27272A] transition-colors whitespace-nowrap"
+                  className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#4338CA] transition-colors whitespace-nowrap"
                 >
                   Demo buchen →
                 </a>
@@ -157,7 +157,7 @@ export function NotesView() {
             {!showForm && (
               <button
                 onClick={() => setShowForm(true)}
-                className="flex items-center gap-2 px-3 py-2.5 bg-white border border-dashed border-[#D4D4D8] rounded-[10px] text-[13px] text-[#A1A1AA] hover:border-[#18181B] hover:text-[#52525B] transition-all w-full text-left"
+                className="flex items-center gap-2 px-3 py-2.5 bg-white border border-dashed border-[#D4D4D8] rounded-[10px] text-[13px] text-[#9CA3AF] hover:border-[#4F46E5] hover:text-[#4B5563] transition-all w-full text-left"
               >
                 <Plus size={14} />
                 Notiz hinzufügen...
@@ -170,7 +170,7 @@ export function NotesView() {
               return (
                 <div
                   key={note.id}
-                  className="bg-white border border-[#E4E4E7] rounded-[10px] overflow-hidden group transition-all"
+                  className="bg-white border border-[#E5E7EB] rounded-[10px] overflow-hidden group transition-all"
                   style={{ borderLeftWidth: 3, borderLeftColor: COLORS.find(c => c.bg === note.color)?.border ?? '#E4E4E7' }}
                 >
                   <div
@@ -182,32 +182,32 @@ export function NotesView() {
                         className="w-2 h-2 rounded-full shrink-0"
                         style={{ backgroundColor: COLORS.find(c => c.bg === note.color)?.border ?? '#D4D4D8' }}
                       />
-                      <span className="text-[14px] font-semibold text-[#09090B] truncate">{note.title}</span>
-                      <span className="text-[11px] text-[#A1A1AA] bg-[#F4F4F5] px-2 py-0.5 rounded-full shrink-0">
+                      <span className="text-[14px] font-semibold text-[#111827] truncate">{note.title}</span>
+                      <span className="text-[11px] text-[#9CA3AF] bg-[#F3F4F6] px-2 py-0.5 rounded-full shrink-0">
                         {note.tag}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 ml-3 shrink-0">
-                      <span className="text-[11px] text-[#A1A1AA]">{formatDate(note.createdAt)}</span>
+                      <span className="text-[11px] text-[#9CA3AF]">{formatDate(note.createdAt)}</span>
                       <button
                         onClick={(e) => deleteNote(note.id, e)}
-                        className="opacity-0 group-hover:opacity-100 text-[#A1A1AA] hover:text-[#52525B] transition-all p-1"
+                        className="opacity-0 group-hover:opacity-100 text-[#9CA3AF] hover:text-[#4B5563] transition-all p-1"
                       >
                         <X size={13} />
                       </button>
                       {isExpanded ? (
-                        <ChevronUp size={14} className="text-[#A1A1AA]" />
+                        <ChevronUp size={14} className="text-[#9CA3AF]" />
                       ) : (
-                        <ChevronDown size={14} className="text-[#A1A1AA]" />
+                        <ChevronDown size={14} className="text-[#9CA3AF]" />
                       )}
                     </div>
                   </div>
 
                   {!isExpanded && (
                     <div className="px-4 pb-3">
-                      <p className="text-[12px] text-[#71717A] leading-relaxed line-clamp-1">
+                      <p className="text-[12px] text-[#6B7280] leading-relaxed line-clamp-1">
                         {lines[0]}
-                        {lines.length > 1 && <span className="text-[#A1A1AA]"> · {lines.length - 1} weitere Zeilen</span>}
+                        {lines.length > 1 && <span className="text-[#9CA3AF]"> · {lines.length - 1} weitere Zeilen</span>}
                       </p>
                     </div>
                   )}
@@ -216,7 +216,7 @@ export function NotesView() {
                     <div className="px-4 pb-4 border-t border-[#F4F4F5]" style={{ backgroundColor: note.color }}>
                       <div className="pt-3">
                         {lines.map((line, i) => (
-                          <p key={i} className="text-[13px] text-[#09090B] leading-relaxed">
+                          <p key={i} className="text-[13px] text-[#111827] leading-relaxed">
                             {line || <span className="block h-2" />}
                           </p>
                         ))}
@@ -233,7 +233,7 @@ export function NotesView() {
       {showCreate && (
         <Modal title="Notizen – Wissen strukturiert festhalten" onClose={() => setShowCreate(false)}>
           <div className="flex flex-col gap-5">
-            <p className="text-[14px] text-[#52525B] leading-relaxed">
+            <p className="text-[14px] text-[#4B5563] leading-relaxed">
               Notizen in Prozessia sind mehr als ein Textfeld. Sie sind der Ort wo Erkenntnisse, Entscheidungen und Ideen aus Ihren Chats und Workflows festgehalten und für das ganze Team zugänglich gemacht werden.
             </p>
 
@@ -244,29 +244,29 @@ export function NotesView() {
                 { emoji: '👥', title: 'Für das Team', text: 'Freigegebene Notizen sind für alle Teammitglieder sichtbar – Wissen bleibt nicht in Einzelköpfen.' },
                 { emoji: '⚡', title: 'Teil der Wissensbasis', text: 'Notizen können der Wissensbasis hinzugefügt werden und machen Ihr KI-System jeden Tag klüger.' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+                <div key={i} className="flex items-start gap-3 bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                   <span className="text-[18px] shrink-0">{item.emoji}</span>
                   <div>
-                    <p className="text-[13px] font-semibold text-[#09090B]">{item.title}</p>
-                    <p className="text-[12px] text-[#52525B] mt-0.5 leading-relaxed">{item.text}</p>
+                    <p className="text-[13px] font-semibold text-[#111827]">{item.title}</p>
+                    <p className="text-[12px] text-[#4B5563] mt-0.5 leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#F0F9FF] border border-blue-100 rounded-[8px] px-4 py-3">
-              <p className="text-[13px] text-blue-800 leading-relaxed">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-4 py-3">
+              <p className="text-[13px] text-[#3730A3] leading-relaxed">
                 In der Vollversion werden Notizen mit Ihren Chats, Workflows und der Wissensbasis verknüpft. In einer persönlichen Demo zeigen wir Ihnen wie das in der Praxis aussieht.
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#E4E4E7]">
-              <p className="text-[12px] text-[#A1A1AA]">Notizen in der Vollversion</p>
+            <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+              <p className="text-[12px] text-[#9CA3AF]">Notizen in der Vollversion</p>
               <a
                 href="https://calendly.com/sebastian-spuhler/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#27272A] transition-colors"
+                className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#4338CA] transition-colors"
               >
                 Demo buchen →
               </a>
@@ -279,13 +279,13 @@ export function NotesView() {
         <Modal title={expandedNote.title} onClose={() => setExpandedNote(null)}>
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] text-[#A1A1AA] bg-[#F4F4F5] px-2 py-0.5 rounded-full">
+              <span className="text-[11px] text-[#9CA3AF] bg-[#F3F4F6] px-2 py-0.5 rounded-full">
                 {expandedNote.tag}
               </span>
-              <span className="text-[11px] text-[#A1A1AA]">{formatDate(expandedNote.createdAt)}</span>
+              <span className="text-[11px] text-[#9CA3AF]">{formatDate(expandedNote.createdAt)}</span>
             </div>
             <div
-              className="rounded-[8px] px-4 py-3 text-[14px] text-[#09090B] leading-relaxed"
+              className="rounded-[8px] px-4 py-3 text-[14px] text-[#111827] leading-relaxed"
               style={{ backgroundColor: expandedNote.color }}
             >
               {expandedNote.content.split('\n').map((line, i) => (

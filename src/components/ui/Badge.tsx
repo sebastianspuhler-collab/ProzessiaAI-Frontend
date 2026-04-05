@@ -1,12 +1,12 @@
 type BadgeVariant = 'active' | 'paused' | 'draft' | 'error' | 'demo' | 'default';
 
 const styles: Record<BadgeVariant, string> = {
-  active: 'bg-green-50 text-green-700',
-  paused: 'bg-yellow-50 text-yellow-700',
-  draft: 'bg-zinc-100 text-zinc-500',
-  error: 'bg-red-50 text-red-600',
-  demo: 'bg-blue-50 text-blue-600',
-  default: 'bg-zinc-100 text-zinc-600',
+  active:  'bg-green-50 text-green-700',
+  paused:  'bg-yellow-50 text-yellow-700',
+  draft:   'bg-[#F3F4F6] text-[#6B7280]',
+  error:   'bg-red-50 text-red-600',
+  demo:    'bg-[#EEF2FF] text-[#4F46E5]',
+  default: 'bg-[#F3F4F6] text-[#6B7280]',
 };
 
 export function Badge({ label, variant = 'default' }: { label: string; variant?: BadgeVariant }) {

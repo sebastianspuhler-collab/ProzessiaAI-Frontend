@@ -131,7 +131,7 @@ export function ChatView({
     text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/`(.*?)`/g, '<code class="bg-zinc-100 px-1 rounded text-[13px]">$1</code>')
+      .replace(/`(.*?)`/g, '<code class="bg-[#EEF2FF] text-[#4F46E5] px-1 rounded text-[13px]">$1</code>')
       .replace(/\n/g, '<br/>');
 
   return (
@@ -139,20 +139,23 @@ export function ChatView({
       <div className="flex-1 flex flex-col overflow-hidden bg-[#FAFAFA]">
 
         {/* Header */}
-        <div className="px-7 py-4 bg-white border-b border-[#E4E4E7] shrink-0">
-          <h1 className="text-[20px] font-bold tracking-[-0.04em] text-[#09090B] leading-none">
+        <div className="px-7 py-4 bg-white border-b border-[#E5E7EB] shrink-0">
+          <h1 className="text-[20px] font-bold tracking-[-0.04em] text-[#111827] leading-none">
             Prozessia AI
           </h1>
-          <p className="text-[12px] text-[#A1A1AA] mt-1">Ihr intelligenter Unternehmens-Assistent</p>
+          <p className="text-[12px] text-[#9CA3AF] mt-1">Ihr intelligenter Unternehmens-Assistent</p>
         </div>
 
         {/* Leerer Zustand */}
         {chat.messages.length === 0 && !loading && (
           <div className="flex-1 flex flex-col items-center justify-center px-8">
-            <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-[#09090B] mb-2">
+            <div className="w-12 h-12 rounded-[12px] bg-[#4F46E5] flex items-center justify-center text-white text-[18px] font-bold mb-5 shadow-[0_4px_12px_rgba(79,70,229,0.3)]">
+              P
+            </div>
+            <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-[#111827] mb-2">
               Wie kann ich Ihnen helfen?
             </h2>
-            <p className="text-[14px] text-[#52525B] mb-8">
+            <p className="text-[14px] text-[#6B7280] mb-8">
               Fragen Sie alles – ich habe Zugriff auf Ihr Unternehmenswissen.
             </p>
             <div className="grid grid-cols-2 gap-2 w-full max-w-[480px]">
@@ -160,7 +163,7 @@ export function ChatView({
                 <button
                   key={s}
                   onClick={() => setInput(s)}
-                  className="p-3 bg-white border border-[#E4E4E7] rounded-[10px] text-[13px] font-medium text-[#52525B] text-left hover:border-[#D1D1D6] hover:shadow-sm transition-all"
+                  className="p-3 bg-white border border-[#E5E7EB] rounded-[10px] text-[13px] font-medium text-[#4B5563] text-left hover:border-[#C7D2FE] hover:bg-[#EEF2FF] hover:text-[#3730A3] transition-all shadow-[0.25px_1px_3px_0px_rgba(79,70,229,0.07)]"
                 >
                   {s}
                 </button>
@@ -175,7 +178,7 @@ export function ChatView({
             {chat.messages.map((msg) => (
               <div key={msg.id} className="flex gap-3 flex-row">
                 {msg.role === 'assistant' ? (
-                  <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-[8px] bg-[#4F46E5] flex items-center justify-center text-white text-[11px] font-semibold shrink-0 mt-0.5">
                     P
                   </div>
                 ) : (
@@ -184,17 +187,17 @@ export function ChatView({
                 <div className="max-w-[80%] flex flex-col gap-2 items-start">
                   <div className={`px-3.5 py-2.5 text-[14px] leading-relaxed ${
                     msg.role === 'user'
-                      ? 'text-[#09090B] font-medium'
-                      : 'text-[#09090B]'
+                      ? 'text-[#111827] font-medium'
+                      : 'text-[#111827]'
                   }`}>
                     {msg.attachments?.map((a) => (
-                      <div key={a} className="flex items-center gap-1.5 mb-2 text-[12px] text-[#A1A1AA]">
+                      <div key={a} className="flex items-center gap-1.5 mb-2 text-[12px] text-[#9CA3AF]">
                         <FileText size={12} />{a}
                       </div>
                     ))}
                     <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.content) }} />
                   </div>
-                  <span className="text-[11px] text-[#A1A1AA] px-3.5">
+                  <span className="text-[11px] text-[#9CA3AF] px-3.5">
                     {msg.timestamp.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
@@ -202,10 +205,10 @@ export function ChatView({
             ))}
             {loading && (
               <div className="flex gap-3">
-                <div className="w-7 h-7 rounded-[8px] bg-[#18181B] flex items-center justify-center text-white text-[11px] font-semibold shrink-0">P</div>
-                <div className="bg-white border border-[#E4E4E7] rounded-[12px] rounded-tl-[4px] px-4 py-3 flex gap-1.5 shadow-sm">
+                <div className="w-7 h-7 rounded-[8px] bg-[#4F46E5] flex items-center justify-center text-white text-[11px] font-semibold shrink-0">P</div>
+                <div className="bg-white border border-[#E5E7EB] rounded-[12px] rounded-tl-[4px] px-4 py-3 flex gap-1.5 shadow-[0.25px_1px_3px_0px_rgba(79,70,229,0.07)]">
                   {[0, 1, 2].map((i) => (
-                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#A1A1AA] animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
+                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#C7D2FE] animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
                   ))}
                 </div>
               </div>
@@ -215,29 +218,29 @@ export function ChatView({
         )}
 
         {/* Input */}
-        <div className="px-6 pb-5 pt-3 bg-[#FAFAFA] border-t border-[#E4E4E7]">
+        <div className="px-6 pb-5 pt-3 bg-[#FAFAFA] border-t border-[#E5E7EB]">
           {attachment && (
             <div className="flex items-center gap-2 mb-2 px-1">
-              <div className="flex items-center gap-1.5 bg-white border border-[#E4E4E7] rounded-[6px] px-2.5 py-1.5 text-[12px] text-[#52525B]">
+              <div className="flex items-center gap-1.5 bg-white border border-[#E5E7EB] rounded-[6px] px-2.5 py-1.5 text-[12px] text-[#6B7280]">
                 <FileText size={12} />{attachment.name}
-                <button onClick={() => setAttachment(null)} className="ml-1 text-[#A1A1AA] hover:text-[#52525B]">
+                <button onClick={() => setAttachment(null)} className="ml-1 text-[#9CA3AF] hover:text-[#6B7280]">
                   <X size={11} />
                 </button>
               </div>
             </div>
           )}
           {showMentions && mentionItems.length > 0 && (
-            <div className="mb-2 bg-white border border-[#E4E4E7] rounded-[8px] shadow-md overflow-hidden">
+            <div className="mb-2 bg-white border border-[#E5E7EB] rounded-[8px] shadow-[0.25px_2px_8px_0px_rgba(79,70,229,0.09)] overflow-hidden">
               {mentionItems.map((item) => (
-                <button key={item.id} onClick={() => insertMention(item)} className="w-full flex items-center gap-2 px-3 py-2 text-[13px] hover:bg-[#F4F4F5] text-left">
-                  <span className="text-[#A1A1AA] text-[11px] w-16 shrink-0">{item.type}</span>
-                  <span className="font-medium text-[#09090B]">{item.label}</span>
+                <button key={item.id} onClick={() => insertMention(item)} className="w-full flex items-center gap-2 px-3 py-2 text-[13px] hover:bg-[#F9FAFB] text-left">
+                  <span className="text-[#9CA3AF] text-[11px] w-16 shrink-0">{item.type}</span>
+                  <span className="font-medium text-[#111827]">{item.label}</span>
                 </button>
               ))}
             </div>
           )}
-          <div className="flex items-end gap-2 bg-white border border-[#E4E4E7] rounded-[12px] px-3 py-2 shadow-sm focus-within:border-[#D1D1D6]">
-            <button onClick={() => fileRef.current?.click()} className="text-[#A1A1AA] hover:text-[#52525B] p-1 transition-colors shrink-0">
+          <div className="flex items-end gap-2 bg-white border border-[#E5E7EB] rounded-[12px] px-3 py-2 shadow-[0.25px_1px_3px_0px_rgba(79,70,229,0.07)] focus-within:border-[#C7D2FE] focus-within:shadow-[0_0_0_3px_rgba(79,70,229,0.08)]">
+            <button onClick={() => fileRef.current?.click()} className="text-[#9CA3AF] hover:text-[#6B7280] p-1 transition-colors shrink-0">
               <Paperclip size={16} />
             </button>
             <input ref={fileRef} type="file" className="hidden" accept=".pdf,.docx,.xlsx,.txt" onChange={handleFileAttach} />
@@ -247,18 +250,18 @@ export function ChatView({
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
               placeholder="Nachricht schreiben... (@Agent, @Dokument)"
               rows={1}
-              className="flex-1 bg-transparent border-none outline-none text-[14px] text-[#09090B] placeholder-[#A1A1AA] resize-none max-h-[120px] py-1"
+              className="flex-1 bg-transparent border-none outline-none text-[14px] text-[#111827] placeholder-[#9CA3AF] resize-none max-h-[120px] py-1"
               style={{ lineHeight: '1.5' }}
             />
             <button
               onClick={sendMessage}
               disabled={!input.trim() && !attachment}
-              className={`w-8 h-8 rounded-[8px] flex items-center justify-center transition-all shrink-0 ${input.trim() || attachment ? 'bg-[#18181B] text-white hover:bg-[#27272A]' : 'bg-[#F4F4F5] text-[#A1A1AA]'}`}
+              className={`w-8 h-8 rounded-[8px] flex items-center justify-center transition-all shrink-0 ${input.trim() || attachment ? 'bg-[#4F46E5] text-white hover:bg-[#4338CA]' : 'bg-[#F3F4F6] text-[#9CA3AF]'}`}
             >
               <Send size={14} />
             </button>
           </div>
-          <p className="text-center text-[11px] text-[#A1A1AA] mt-2">
+          <p className="text-center text-[11px] text-[#9CA3AF] mt-2">
             Prozessia AI · DSGVO-konform · EU-Hosting
           </p>
         </div>

@@ -121,7 +121,7 @@ export function WorkflowsView() {
         {loading ? (
           <div className="flex flex-col gap-3">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-28 bg-white border border-[#E4E4E7] rounded-[10px] animate-pulse" />
+              <div key={i} className="h-28 bg-white border border-[#E5E7EB] rounded-[10px] animate-pulse" />
             ))}
           </div>
         ) : workflows.length === 0 ? (
@@ -142,11 +142,11 @@ export function WorkflowsView() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-[14px] font-semibold text-[#09090B] truncate">{wf.name}</h3>
+                      <h3 className="text-[14px] font-semibold text-[#111827] truncate">{wf.name}</h3>
                       <Badge label={statusLabel(wf.status)} variant={statusVariant(wf.status)} />
                     </div>
-                    <p className="text-[13px] text-[#52525B] mb-2 line-clamp-1">{wf.description}</p>
-                    <div className="flex items-center gap-3 text-[11px] text-[#A1A1AA]">
+                    <p className="text-[13px] text-[#4B5563] mb-2 line-clamp-1">{wf.description}</p>
+                    <div className="flex items-center gap-3 text-[11px] text-[#9CA3AF]">
                       <span className="flex items-center gap-1">
                         <Clock size={11} />
                         {triggerLabel(wf)}
@@ -179,8 +179,8 @@ export function WorkflowsView() {
                 </div>
 
                 {expandedId === wf.id && wf.nodes && wf.nodes.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-[#E4E4E7]">
-                    <p className="text-[11px] font-semibold text-[#A1A1AA] uppercase tracking-[0.05em] mb-2">
+                  <div className="mt-3 pt-3 border-t border-[#E5E7EB]">
+                    <p className="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-[0.05em] mb-2">
                       Schritte
                     </p>
                     <div className="flex flex-col gap-1.5">
@@ -194,7 +194,7 @@ export function WorkflowsView() {
                                 ? 'bg-[#FFF7ED] border border-[#FED7AA]'
                                 : ns === 'done'
                                 ? 'bg-[#F0FDF4] border border-[#BBF7D0]'
-                                : 'bg-[#F7F7F8]'
+                                : 'bg-[#F9FAFB]'
                             }`}
                           >
                             <span
@@ -203,19 +203,19 @@ export function WorkflowsView() {
                                   ? 'bg-[#FB923C] text-white'
                                   : ns === 'done'
                                   ? 'bg-[#22C55E] text-white'
-                                  : 'bg-[#E4E4E7] text-[#52525B]'
+                                  : 'bg-[#F3F4F6] text-[#6B7280]'
                               }`}
                             >
                               {ns === 'done' ? <CheckCircle size={11} /> : nodeIcon(node.type)}
                             </span>
-                            <span className="text-[12px] font-medium text-[#09090B]">{node.name}</span>
+                            <span className="text-[12px] font-medium text-[#111827]">{node.name}</span>
                             {ns === 'active' && (
                               <span className="text-[11px] text-[#EA580C] ml-auto animate-pulse">läuft…</span>
                             )}
                             {ns === 'done' && (
                               <span className="text-[11px] text-[#16A34A] ml-auto">✓</span>
                             )}
-                            {!ns && <span className="text-[11px] text-[#A1A1AA] ml-auto">{idx + 1}</span>}
+                            {!ns && <span className="text-[11px] text-[#9CA3AF] ml-auto">{idx + 1}</span>}
                           </div>
                         );
                       })}
@@ -231,40 +231,40 @@ export function WorkflowsView() {
       {showCreate && (
         <Modal title="Workflows – Automatisierung ohne Code" onClose={() => setShowCreate(false)}>
           <div className="flex flex-col gap-5">
-            <p className="text-[14px] text-[#52525B] leading-relaxed">
+            <p className="text-[14px] text-[#4B5563] leading-relaxed">
               Workflows automatisieren mehrstufige Prozesse die heute manuell oder halbautomatisch ablaufen. Sie definieren was passieren soll – Prozessia führt es aus, zuverlässig und ohne Eingriff.
             </p>
 
             <div className="flex flex-col gap-2">
-              <p className="text-[13px] font-semibold text-[#09090B]">Was Workflows erledigen können:</p>
+              <p className="text-[13px] font-semibold text-[#111827]">Was Workflows erledigen können:</p>
               {[
                 { emoji: '⏰', title: 'Zeitgesteuert', text: 'Jeden Montag automatisch einen Report erstellen und versenden' },
                 { emoji: '📥', title: 'Ereignisgesteuert', text: 'Sobald ein neues Dokument eingeht wird es verarbeitet und weitergeleitet' },
                 { emoji: '🔗', title: 'Systemübergreifend', text: 'Daten aus System A laden, mit KI verarbeiten, in System B speichern' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+                <div key={i} className="flex items-start gap-3 bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                   <span className="text-[18px] shrink-0">{item.emoji}</span>
                   <div>
-                    <p className="text-[13px] font-semibold text-[#09090B]">{item.title}</p>
-                    <p className="text-[12px] text-[#52525B] mt-0.5">{item.text}</p>
+                    <p className="text-[13px] font-semibold text-[#111827]">{item.title}</p>
+                    <p className="text-[12px] text-[#4B5563] mt-0.5">{item.text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#F0F9FF] border border-blue-100 rounded-[8px] px-4 py-3">
-              <p className="text-[13px] text-blue-800 leading-relaxed">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-4 py-3">
+              <p className="text-[13px] text-[#3730A3] leading-relaxed">
                 In der Vollversion beschreiben Sie Workflows in natürlicher Sprache – Prozessia erstellt die Automatisierung. Testen Sie unsere Demo-Workflows mit dem „Ausführen"-Button.
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#E4E4E7]">
-              <p className="text-[12px] text-[#A1A1AA]">Eigene Workflows in der Vollversion</p>
+            <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+              <p className="text-[12px] text-[#9CA3AF]">Eigene Workflows in der Vollversion</p>
               <a
                 href="https://calendly.com/sebastian-spuhler/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px]"
+                className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px]"
               >
                 Demo buchen →
               </a>
@@ -281,25 +281,25 @@ export function WorkflowsView() {
                 label={runResult.status === 'completed' ? 'Abgeschlossen' : runResult.status}
                 variant={runResult.status === 'completed' ? 'active' : 'error'}
               />
-              <span className="text-[12px] text-[#A1A1AA]">{runResult.durationMs}ms</span>
+              <span className="text-[12px] text-[#9CA3AF]">{runResult.durationMs}ms</span>
             </div>
             {runResult.nodeResults?.map((n, i) => (
-              <div key={i} className="bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+              <div key={i} className="bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                 <div className="flex items-center gap-2 mb-1">
-                  <p className="text-[12px] font-semibold text-[#52525B]">{n.name}</p>
+                  <p className="text-[12px] font-semibold text-[#4B5563]">{n.name}</p>
                   <Badge
                     label={n.status === 'success' ? '✓' : '✗'}
                     variant={n.status === 'success' ? 'active' : 'error'}
                   />
                 </div>
-                <p className="text-[12px] text-[#A1A1AA]">{String(n.output).slice(0, 200)}</p>
+                <p className="text-[12px] text-[#9CA3AF]">{String(n.output).slice(0, 200)}</p>
               </div>
             ))}
-            <div className="bg-[#F0F9FF] border border-[#BAE6FD] rounded-[8px] px-3.5 py-2.5 mt-1">
-              <p className="text-[11px] font-semibold text-[#0284C7] uppercase tracking-[0.05em] mb-1">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-3.5 py-2.5 mt-1">
+              <p className="text-[11px] font-semibold text-[#4F46E5] uppercase tracking-[0.05em] mb-1">
                 Was bedeutet das?
               </p>
-              <p className="text-[12px] text-[#0369A1] leading-relaxed">
+              <p className="text-[12px] text-[#3730A3] leading-relaxed">
                 {DEMO_CONTENT.workflowResultExplanation}
               </p>
             </div>

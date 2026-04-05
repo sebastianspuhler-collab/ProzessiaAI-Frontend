@@ -7,31 +7,15 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
-      animation: {
-        aurora: "aurora 60s linear infinite",
-      },
-      keyframes: {
-        aurora: {
-          from: { backgroundPosition: "50% 50%, 50% 50%" },
-          to: { backgroundPosition: "350% 50%, 350% 50%" },
-        },
+      colors: {
+        primary:   { DEFAULT: '#4F46E5', hover: '#4338CA', foreground: '#EEF2FF' },
+        accent:    { DEFAULT: '#EEF2FF', border: '#C7D2FE', foreground: '#3730A3' },
+        border:    '#E5E7EB',
+        'border-strong': '#D1D5DB',
+        muted:     { DEFAULT: '#F9FAFB', foreground: '#6B7280' },
+        sidebar:   '#FFFFFF',
       },
     },
   },
-  plugins: [
-    function ({ addBase }) {
-      addBase({
-        ":root": {
-          "--white": "#ffffff",
-          "--black": "#000000",
-          "--transparent": "transparent",
-          "--blue-300": "#93c5fd",
-          "--blue-400": "#60a5fa",
-          "--blue-500": "#3b82f6",
-          "--indigo-300": "#a5b4fc",
-          "--violet-200": "#ddd6fe",
-        },
-      });
-    },
-  ],
+  plugins: [],
 };

@@ -42,15 +42,15 @@ export function IntegrationsView() {
             <Card key={adapter.id}>
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <div className="w-9 h-9 rounded-[8px] bg-[#F4F4F5] flex items-center justify-center text-[#52525B] shrink-0">
+                  <div className="w-9 h-9 rounded-[8px] bg-[#EEF2FF] flex items-center justify-center text-[#4F46E5] shrink-0">
                     <Plug size={16} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <h3 className="text-[14px] font-semibold text-[#09090B] truncate">{adapter.name}</h3>
+                      <h3 className="text-[14px] font-semibold text-[#111827] truncate">{adapter.name}</h3>
                       <Badge label={statusLabel(adapter.status)} variant={statusVariant(adapter.status)} />
                     </div>
-                    <p className="text-[12px] text-[#A1A1AA]">
+                    <p className="text-[12px] text-[#9CA3AF]">
                       {typeLabel[adapter.type] ?? adapter.type}
                       {adapter.ssl && ' · SSL'}
                       {adapter.capabilities && adapter.capabilities.length > 0
@@ -67,7 +67,7 @@ export function IntegrationsView() {
                 </div>
               </div>
 
-              <p className="text-[12px] text-[#71717A] mt-3 leading-relaxed">
+              <p className="text-[12px] text-[#6B7280] mt-3 leading-relaxed">
                 {adapter.explanation}
               </p>
             </Card>
@@ -78,7 +78,7 @@ export function IntegrationsView() {
       {showAddIntegration && (
         <Modal title="Integrationen – Ihre Daten direkt im Chat" onClose={() => setShowAddIntegration(false)}>
           <div className="flex flex-col gap-5">
-            <p className="text-[14px] text-[#52525B] leading-relaxed">
+            <p className="text-[14px] text-[#4B5563] leading-relaxed">
               Prozessia verbindet sich mit den Systemen die Sie bereits nutzen – ohne dass Sie etwas umstellen müssen. Ihre Daten bleiben wo sie sind und werden direkt im Chat zugänglich.
             </p>
 
@@ -89,29 +89,29 @@ export function IntegrationsView() {
                 { emoji: '⚡', title: 'Teil Ihrer Workflows', text: 'Integrationen werden in Workflows eingebunden – Daten laden, mit KI verarbeiten, zurückschreiben.' },
                 { emoji: '🔒', title: 'Sicher & DSGVO-konform', text: 'Alle Verbindungen sind verschlüsselt. EU-Hosting. Ihre Daten verlassen nie Ihren Tenant.' },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-[#F7F7F8] rounded-[8px] px-3 py-2.5">
+                <div key={i} className="flex items-start gap-3 bg-[#F9FAFB] rounded-[8px] px-3 py-2.5">
                   <span className="text-[18px] shrink-0">{item.emoji}</span>
                   <div>
-                    <p className="text-[13px] font-semibold text-[#09090B]">{item.title}</p>
-                    <p className="text-[12px] text-[#52525B] mt-0.5 leading-relaxed">{item.text}</p>
+                    <p className="text-[13px] font-semibold text-[#111827]">{item.title}</p>
+                    <p className="text-[12px] text-[#4B5563] mt-0.5 leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-[#F0F9FF] border border-blue-100 rounded-[8px] px-4 py-3">
-              <p className="text-[13px] text-blue-800 leading-relaxed">
+            <div className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-[8px] px-4 py-3">
+              <p className="text-[13px] text-[#3730A3] leading-relaxed">
                 In der Vollversion verbinden Sie Ihre Systeme in wenigen Minuten. In einer persönlichen Demo zeigen wir Ihnen wie die Integration mit Ihren Daten in der Praxis aussieht.
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#E4E4E7]">
-              <p className="text-[12px] text-[#A1A1AA]">Integrationen in der Vollversion einrichten</p>
+            <div className="flex items-center justify-between pt-4 border-t border-[#E5E7EB]">
+              <p className="text-[12px] text-[#9CA3AF]">Integrationen in der Vollversion einrichten</p>
               <a
                 href="https://calendly.com/sebastian-spuhler/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-[#18181B] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#27272A] transition-colors"
+                className="px-3 py-1.5 bg-[#4F46E5] text-white text-[13px] font-medium rounded-[7px] hover:bg-[#4338CA] transition-colors"
               >
                 Demo buchen →
               </a>
